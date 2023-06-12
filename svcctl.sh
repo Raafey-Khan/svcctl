@@ -23,6 +23,9 @@ function svcctl() {
 		dr|reload)
 			sudo systemctl daemon-reload
 		;;
+		rr|restart)
+			sudo systemctl restart $2.service
+		;;
 		l|logs)
 			journalctl -u $2.service -f
 		;;
@@ -36,10 +39,14 @@ function svcctl() {
 		        echo "    r | run     - To run a service"
 		        echo "    d | disable - To disable a service"
 		        echo "    s | status  - To view service status"
-		        echo "   dr | reload  - To reload systemd daemon"
+                        echo "    l | logs    - To view logs for a particular service, live"
+			echo "   dr | reload  - To reload systemd daemon"
+			echo "   rr | restart - To restart systemd service"
 		        echo "    h | help    - To view this help page"
-			echo "    l | logs    - To view logs for a particular service, live"
 		        echo "For misc issues, please email gagan@luganodes.com"
+		;;
+		*)
+			echo "svcctl: No arguments provided. Please run svcctl help to view supported arguments."
 		;;
 	esac
 }
