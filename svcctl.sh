@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Environment Setup Functions
+# To use, add source /path/to/script in your bashrc/zshrc/xyz.
 
 # systemctl wrappers
 function svcctl() {
